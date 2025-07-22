@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <title>Fun Rádio na TV</title>
+  <style>
+    html, body {
+      margin:0; padding:0;
+      width:100%; height:100%;
+      background:black; overflow:hidden;
+    }
+    audio {
+      display:none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Pozadie je čierne, audio beží na pozadí -->
+  <audio id="radio" autoplay>
+    <source src="https://stream.funradio.sk/fun128.mp3" type="audio/mpeg">
+    Váš prehliadač nepodporuje audio.
+  </audio>
+
+  <script>
+    // Ak rádio nespadne do 10s, vypíšeme chybu do konzoly
+    setTimeout(() => {
+      const audio = document.getElementById('radio');
+      if (audio.paused) console.error('Rádio sa nespustilo.');
+    }, 10000);
+  </script>
+</body>
+</html>
