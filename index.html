@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2566">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="sk"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;Fun Rádio TV Player&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* Celé čierne pozadie */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>html, body {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin: 0;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>height: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: black;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: white;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-family: sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>flex-direction: column;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>justify-content: center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* Štýl času */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>#time {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 8vw;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-weight: bold;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>line-height: 1;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>#seconds {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 6vw;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: #bbb;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-left: 0.2em;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>line-height: 1;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* Dátum pod časom */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>#date {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 2.5vw;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 0.5em;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* Skryté tlačidlo aj audio element */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>#play-btn {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: none;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>position: absolute;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>top: 1em;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>right: 1em;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: #222;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: #fff;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid #555;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 0.5em 1em;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 1.2vw;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 0.3em;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- Čas + sekundy --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div id="time-row" style="display:flex; align-items:flex-end;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="time"&gt;--:--&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="seconds"&gt;--&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div id="date"&gt;–&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- Skryté tlačidlo pre prípadné manuálne prehratie --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;button id="play-btn"&gt;PLAY FUN RÁDIO&lt;/button&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- Audio stream Fun Rádio --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;audio id="player" preload="none"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;source src="https://stream.funradio.sk/fun128.mp3" type="audio/mpeg"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>Váš prehliadač nepodporuje prehrávanie audia.</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/audio&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>// ------------------------</p>
+<p class="p1"><span class="Apple-converted-space">    </span>// 1) Hodiny &amp; dátum</p>
+<p class="p1"><span class="Apple-converted-space">    </span>// ------------------------</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function updateClock() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const t = new Date();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const hh = t.getHours().toString().padStart(2,'0');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const mm = t.getMinutes().toString().padStart(2,'0');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const ss = t.getSeconds().toString().padStart(2,'0');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>document.getElementById('time').textContent = `${hh}:${mm}`;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>document.getElementById('seconds').textContent = ss;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>const days = ["nedeľa","pondelok","utorok","streda","štvrtok","piatok","sobota"];</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const dayName = days[t.getDay()];</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const dd = t.getDate().toString().padStart(2,'0');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const mn = (t.getMonth()+1).toString().padStart(2,'0');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const yyyy = t.getFullYear();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>document.getElementById('date').textContent = `${dayName}, ${dd}.${mn}.${yyyy}`;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>setInterval(updateClock, 1000);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>updateClock();</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// ------------------------</p>
+<p class="p1"><span class="Apple-converted-space">    </span>// 2) Prehrávanie streamu</p>
+<p class="p1"><span class="Apple-converted-space">    </span>// ------------------------</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const player = document.getElementById('player');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const btn = document.getElementById('play-btn');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Po úspešnom štarte prehrávania schovať tlačidlo</p>
+<p class="p1"><span class="Apple-converted-space">    </span>player.addEventListener('playing', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>btn.style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Ak prehrávanie zlyhá, ukázať chybu v tlačidle</p>
+<p class="p1"><span class="Apple-converted-space">    </span>player.addEventListener('error', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>btn.textContent = 'Chyba pri prehrávaní rádia';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>btn.style.display = 'block';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Keď sa tlačidlo stlačí, spusti prehrávanie</p>
+<p class="p1"><span class="Apple-converted-space">    </span>btn.addEventListener('click', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>btn.disabled = true;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>btn.textContent = 'Pripájam...';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>player.play().catch(_=&gt;{</p>
+<p class="p1"><span class="Apple-converted-space">        </span>btn.textContent = 'Žiadne audio zdroj';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>btn.disabled = false;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Autoplay (pokúsi sa bez tlačidla)</p>
+<p class="p1"><span class="Apple-converted-space">    </span>window.addEventListener('load', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>player.play()</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.catch(_=&gt;{</p>
+<p class="p1"><span class="Apple-converted-space">          </span>// ak autoplay prehliadač zablokuje, ukážeme tlačidlo</p>
+<p class="p1"><span class="Apple-converted-space">          </span>btn.style.display = 'block';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/script&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
